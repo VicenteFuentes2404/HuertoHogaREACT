@@ -1,0 +1,199 @@
+/* Fuentes */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F7F7F7;
+  color: #333333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.HeaderPrincipal {
+  background: #2E7D32;
+
+}
+
+.linea1 {
+  border-right: 1px solid rgb(187, 186, 186);
+}
+
+.navbar .nav-link {
+    color: #ffffff; /* blanco */
+}
+
+.navbar .nav-link:hover {
+    color: #cce8c6; /* opcional: un verde más claro al pasar el mouse */
+}
+
+/* espacio entre el inicio de sesion y el footer */
+.h-100 {
+    margin-bottom: 50px; 
+}
+
+
+
+
+/* Footer */
+.footer {
+  background: #2E7D32;
+  padding: 20px;
+  text-align: center;
+  border-top: 2px solid #eee;
+  color: #ffffff
+}
+.footer-enlaces a {
+  margin: 0 5px;
+  text-decoration: none;
+}
+.footer-formulario {
+  margin: 15px 0;
+}
+.footer-formulario input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.copy {
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+
+footer a {
+  color:#ffffff
+}
+
+footer a:hover {
+    color: #cce8c6;
+}
+
+
+.menu a {
+  color:#000000
+}
+
+.menu a:hover {
+    color: #5c5c5c;
+}
+
+
+
+
+
+
+/*HOME*/
+/* Hero */
+section h1 {
+  color: #2E7D32;
+}
+
+
+.hero-foto{
+  width: 550px;
+}
+
+.hero {
+    background: linear-gradient(135deg, #ebfcf6, #143803); 
+    color: #ffffff; /* texto blanco */
+    padding: 4rem 1rem;
+}
+
+
+/* imagenes de las card*/
+.card-img-top {
+  height: 200px;         
+  object-fit: cover;    
+}
+
+
+/*botones*/
+
+.btn-success {
+  background-color: #2E7D32;
+  border-color: #2E7D32;
+}
+
+.btn-success:hover {
+  background-color: #256628;
+  border-color: #256628; /* opcional: un verde más oscuro al pasar el mouse */
+
+}
+
+
+
+
+
+
+
+
+/*INICIO DE SESIÓN*/
+/* espacio entre el inicio de sesion y el footer */
+.h-100 {
+    margin-bottom: 50px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+/*DETALLE PRODUCTOS*/
+#carouselProducto .carousel-item img {
+  height: 400px;        /* ajusta la altura según necesites */
+  object-fit: cover;    /* recorta la imagen sin deformarla */
+  border-radius: 8px;   /* BORDES redondeados */
+}
+
+
+/* Efecto hover para productos relacionados */
+.hover-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+
+
+
+
+
+/*Paginación */
+.pagination .page-link {
+  color: #2E7D32
+
+}
+
+ .pagination .page-link:hover {
+    background-color: #7cda81; /* verde más oscuro */
+  }
+
+
+
+
+
+
+  
+
+
+/*NOSOTROS*/
+
+.fondo-imagen {
+    background-image: url("../img/banerNosotros.jpg");
+
+    background-size: cover;      /* La imagen cubre todo el espacio */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat;
+    min-height: 40vh;            /* Ajusta el alto que necesites */
+    border-radius: 0.5rem;       /* Bordes redondeados opcionales */
+}
+
+.text-justify {
+  text-align: justify;
+}

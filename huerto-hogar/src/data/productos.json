@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "espinacas-frescas",
+    "nombre": "Espinacas Frescas",
+    "precio": 1990,
+    "descripcion": "Hojas frescas de espinaca cultivadas localmente.",
+    "imagen": "/assets/img/Espinacas frescas.jpg"
+  },
+  {
+    "slug": "naranjas-valencia",
+    "nombre": "Naranjas Valencia",
+    "precio": 2490,
+    "descripcion": "Naranjas jugosas de temporada.",
+    "imagen": "/assets/img/Naranjas valencia.jpg"
+  }
+]
