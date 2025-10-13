@@ -1,7 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logoHuerto from "../assets/img/logo-huerto.png";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const emailRegex = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
+    let errores = [];
+
+    if (!email.trim()) {
+      errores.push("El correo electrónico es obligatorio.");
+    } else if (!emailRegex.test(email)) {
+      errores.push("El correo debe ser @duoc.cl, @profesor.duoc.cl o @gmail.com.");
+    } else if (email.length > 100) {
+      errores.push("El correo debe tener como máximo 100 caracteres.");
+    }
+
+    if (!password.trim()) {
+      errores.push("La contraseña es obligatoria.");
+    } else if (password.length < 4) {
+      errores.push("La contraseña debe tener al menos 4 caracteres.");
+    } else if (password.length > 10) {
+      errores.push("La contraseña debe tener como máximo 10 caracteres.");
+    }
+
+    if (errores.length > 0) {
+      alert("Corrige los siguientes errores:\n\n" + errores.join("\n"));
+    } else {
+      alert("Datos correctos. Inicio de sesión exitoso.");
+      navigate("/perfil"); // redirige a la página de perfil
+    }
+  };
+
   return (
     <section className="h-100">
       <div className="container h-100">
@@ -9,20 +44,13 @@ function Login() {
           <div className="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
             <div className="text-center my-5">
               <img src={logoHuerto} alt="logo" width="250" />
- 
             </div>
 
             <div className="card shadow-lg">
               <div className="card-body p-5">
                 <h1 className="fs-4 card-title fw-bold mb-4">Iniciar sesión</h1>
 
-                <form
-                  id="loginForm"
-                  method="POST"
-                  className="needs-validation"
-                  noValidate
-                  autoComplete="off"
-                >
+                <form onSubmit={handleSubmit} className="needs-validation" noValidate autoComplete="off">
                   <div className="mb-3">
                     <label className="mb-2 text-muted" htmlFor="email">
                       Correo electrónico
@@ -31,13 +59,11 @@ function Login() {
                       id="email"
                       type="email"
                       className="form-control"
-                      name="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       required
                       autoFocus
                     />
-                    <div className="invalid-feedback">
-                      El correo electrónico no es válido
-                    </div>
                   </div>
 
                   <div className="mb-3">
@@ -53,12 +79,10 @@ function Login() {
                       id="password"
                       type="password"
                       className="form-control"
-                      name="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       required
                     />
-                    <div className="invalid-feedback">
-                      La contraseña es requerida
-                    </div>
                   </div>
 
                   <div className="d-flex align-items-center">
