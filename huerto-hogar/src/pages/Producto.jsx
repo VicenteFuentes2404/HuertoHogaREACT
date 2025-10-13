@@ -1,13 +1,18 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import productos from '../data/productos.json';
+// 🔹 Cambiado a productos.js que ya importa imágenes
+import productos from '../data/productos';
 
 function Producto() {
   const { slug } = useParams();
   const prod = productos.find((p) => p.slug === slug);
 
   if (!prod)
-    return React.createElement('p', { className: 'text-center mt-5' }, 'Producto no encontrado');
+    return React.createElement(
+      'p',
+      { className: 'text-center mt-5' },
+      'Producto no encontrado'
+    );
 
   return React.createElement(
     'div',
