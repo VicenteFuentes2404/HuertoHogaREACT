@@ -50,15 +50,11 @@ function Navbar() {
               )
             ),
 
-            React.createElement(
-              'li',
-              { className: 'nav-item' },
-              React.createElement(
-                NavLink,
-                { to: '/producto/espinacas-frescas', className: 'nav-link linea1' },
-                'Productos'
-              )
-            ),
+          React.createElement(
+            NavLink,
+            { to: '/productos', className: 'nav-link linea1' },
+          'Productos'
+                  ),
 
             React.createElement(
               'li',

@@ -1,7 +1,8 @@
+// src/pages/Home.jsx
 import React from 'react';
-import productos from '../data/productos'; // 👈 ahora es el JS con imports de imágenes
-import { Link } from 'react-router-dom';
+import productos from '../data/productos'; // JS con imports de imágenes
 import huertoHero from '../assets/img/huerto hero.jpg';
+import ProductCard from '../components/ProductCard';
 
 function Home() {
   return (
@@ -33,19 +34,7 @@ function Home() {
       <section className="container my-5" id="productos">
         <div className="row g-4">
           {productos.map((p) => (
-            <div key={p.slug} className="col-md-3">
-              <div className="card h-100 shadow hover-card">
-                <img src={p.imagen} className="card-img-top" alt={p.nombre} />
-                <div className="card-body">
-                  <h5 className="card-title">{p.nombre}</h5>
-                  <p className="card-text">{p.descripcion}</p>
-                  <p className="fw-bold">${p.precio}</p>
-                  <Link to={`/producto/${p.slug}`} className="btn btn-success">
-                    Ver Producto
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <ProductCard key={p.slug} producto={p} />
           ))}
         </div>
       </section>
