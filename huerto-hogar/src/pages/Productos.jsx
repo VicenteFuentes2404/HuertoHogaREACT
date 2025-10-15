@@ -1,9 +1,18 @@
-import React from "react";
+// src/pages/Productos.jsx
+import React, { useState } from "react";
 import "../assets/css/style.css";
 import ProductCard from "../components/ProductCard";
-import productos from "../data/productos"; // Tu JS con productos
+import productos from "../data/productos";
 
 function Productos() {
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("todos");
+
+  // Filtramos los productos según la categoría seleccionada
+  const productosFiltrados =
+    categoriaSeleccionada === "todos"
+      ? productos
+      : productos.filter((p) => p.categoria === categoriaSeleccionada);
+
   return (
     <main>
       {/* HERO */}
@@ -17,12 +26,47 @@ function Productos() {
         </div>
       </section>
 
+      {/* FILTROS */}
+      <section className="container my-4 text-center">
+        <h4>Filtrar por categoría</h4>
+        <div className="btn-group" role="group">
+          <button
+            className={`btn btn-outline-success ${categoriaSeleccionada === "todos" ? "active" : ""}`}
+            onClick={() => setCategoriaSeleccionada("todos")}
+          >
+            Todos
+          </button>
+          <button
+            className={`btn btn-outline-success ${categoriaSeleccionada === "fruta" ? "active" : ""}`}
+            onClick={() => setCategoriaSeleccionada("fruta")}
+          >
+            Frutas
+          </button>
+          <button
+            className={`btn btn-outline-success ${categoriaSeleccionada === "verdura" ? "active" : ""}`}
+            onClick={() => setCategoriaSeleccionada("verdura")}
+          >
+            Verduras
+          </button>
+          <button
+            className={`btn btn-outline-success ${categoriaSeleccionada === "organico" ? "active" : ""}`}
+            onClick={() => setCategoriaSeleccionada("organico")}
+          >
+            Orgánicos
+          </button>
+        </div>
+      </section>
+
       {/* LISTADO DE PRODUCTOS */}
       <section className="container my-5" id="productos">
         <div className="row g-4">
-          {productos.map((p) => (
-            <ProductCard key={p.slug} producto={p} />
-          ))}
+          {productosFiltrados.length > 0 ? (
+            productosFiltrados.map((p) => (
+              <ProductCard key={p.slug} producto={p} />
+            ))
+          ) : (
+            <p className="text-center">No hay productos en esta categoría.</p>
+          )}
         </div>
       </section>
     </main>

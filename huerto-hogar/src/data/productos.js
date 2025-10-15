@@ -13,56 +13,64 @@ const productos = [
     nombre: 'Manzanas Fuji',
     precio: 1200,
     descripcion: 'Manzanas Fuji crujientes y dulces.',
-    imagen: manzanaFuji
+    imagen: manzanaFuji,
+    categoria: "fruta"
   },
   {
     slug: 'naranjas-valencia',
     nombre: 'Naranjas Valencia',
     precio: 1000,
     descripcion: 'Jugosas y ricas en vitamina C.',
-    imagen: naranjasValencia
+    imagen: naranjasValencia,
+    categoria: "fruta"
   },
   {
     slug: 'platanos-cavendish',
     nombre: 'Plátanos Cavendish',
     precio: 800,
     descripcion: 'Maduros y dulces.',
-    imagen: platanosCavendish
+    imagen: platanosCavendish,
+    categoria: "fruta"
   },
   {
     slug: 'zanahorias-organicas',
     nombre: 'Zanahorias Orgánicas',
     precio: 900,
     descripcion: 'Crujientes cultivadas sin pesticidas.',
-    imagen: zanahoriasOrganicas
+    imagen: zanahoriasOrganicas,
+    categoria: "verdura"
   },
   {
     slug: 'espinacas-frescas',
     nombre: 'Espinacas Frescas',
     precio: 700,
     descripcion: 'Frescas y nutritivas.',
-    imagen: espinacasFrescas
+    imagen: espinacasFrescas,
+    categoria: "verdura"
   },
   {
     slug: 'pimientos-tricolores',
     nombre: 'Pimientos Tricolores',
     precio: 1500,
     descripcion: 'Ideales para salteados.',
-    imagen: pimientosTricolores
+    imagen: pimientosTricolores,
+    categoria: "verdura"
   },
   {
     slug: 'miel-organica',
     nombre: 'Miel Orgánica',
     precio: 5000,
     descripcion: 'Pura y orgánica.',
-    imagen: mielOrganica
+    imagen: mielOrganica,
+    categoria: "organico"
   },
   {
     slug: 'kiwi',
     nombre: 'Kiwi',
     precio: 1000,
     descripcion: 'Dulces y jugosos.',
-    imagen: kiwi
+    imagen: kiwi,
+    categoria: "fruta"
   }
 ];
 
