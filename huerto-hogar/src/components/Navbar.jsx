@@ -4,17 +4,14 @@ import logo from '../assets/img/logo2.png';
 
 function Navbar() {
   return React.createElement(
-    'header',
-    { className: 'HeaderPrincipal' },
-
-    // NAVBAR PRINCIPAL
+  'header',
+  { className: 'HeaderPrincipal' },
+  React.createElement(
+    'nav',
+    { className: 'navbar fixed-top HeaderPrincipal ' }, // ✅ fixed-top y un fondo para que no se vea transparente
     React.createElement(
-      'nav',
-      { className: 'navbar ms-5' },
-
-      React.createElement(
-        'div',
-        { className: 'container-fluid d-flex align-items-center' },
+      'div',
+      { className: 'container-fluid d-flex align-items-center' },
 
         // LOGO
         React.createElement(

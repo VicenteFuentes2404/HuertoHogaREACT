@@ -2,7 +2,7 @@
 import React from 'react';
 import productos from '../data/productos'; // JS con imports de imágenes
 import huertoHero from '../assets/img/huerto hero.jpg';
-import ProductCard from '../components/ProductCard';
+import HomeCard from '../components/HomeCard';
 
 function Home() {
   return (
@@ -34,7 +34,7 @@ function Home() {
       <section className="container my-5" id="productos">
         <div className="row g-4">
           {productos.map((p) => (
-            <ProductCard key={p.slug} producto={p} />
+            < HomeCard key={p.slug} producto={p} />
           ))}
         </div>
       </section>

@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Registro from './pages/Registro';
 import Productos from './pages/Productos';
 import productos from './data/productos.js';
+import Blogs from './pages/Blogs';
 
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
       React.createElement(Route, { path: '/nosotros', element: React.createElement(Nosotros) }),
       React.createElement(Route, { path: '/login', element: React.createElement(Login) }),
       React.createElement(Route, { path: '/registro', element: React.createElement(Registro) }),
+      React.createElement(Route, { path: '/blogs', element: React.createElement(Blogs) })
+
+      
     ),
     React.createElement(Footer)
   );
