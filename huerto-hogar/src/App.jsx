@@ -13,6 +13,7 @@ import productos from './data/productos.js';
 import Blogs from './pages/Blogs';
 
 
+
 function App() {
   // Diagnóstico rápido:
   console.log('Navbar type:', typeof Navbar);
@@ -34,7 +35,8 @@ function App() {
       React.createElement(Route, { path: '/login', element: React.createElement(Login) }),
       React.createElement(Route, { path: '/registro', element: React.createElement(Registro) }),
       React.createElement(Route, { path: '/blogs', element: React.createElement(Blogs) })
-
+      
+      
       
     ),
     React.createElement(Footer)
