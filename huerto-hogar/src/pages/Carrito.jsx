@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
+import { useNavigate } from 'react-router-dom';
+
 
 function Carrito() {
   const { cartItems, removeFromCart, incrementQuantity, decrementQuantity } = useCart();
   const [descuento, setDescuento] = useState(0);
+  const navigate = useNavigate();
 
   //  Cálculo del total en tiempo real
   const total = cartItems.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
@@ -113,7 +116,9 @@ function Carrito() {
             </button>
           </div>
 
-          <button className="btn btn-primary w-100 mt-3">Pagar</button>
+          <button className="btn btn-primary w-100 mt-3" onClick={() => navigate('/checkout')}>
+           Pagar
+          </button>
         </div>
       </div>
     </div>
