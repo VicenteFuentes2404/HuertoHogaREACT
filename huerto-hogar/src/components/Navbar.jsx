@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/img/logo2.png';
+import { useCart } from "../context/CartContext";
+
 
 function Navbar() {
+
+  const { cartItems } = useCart(); // Obtenemos los productos del carrito
+  const totalItems = cartItems.reduce((acc, item) => acc + item.cantidad, 0);  //Calculamos la cantidad total de productos (sumando las cantidades)
+ 
   return React.createElement(
   'header',
   { className: 'HeaderPrincipal' },
@@ -48,10 +54,14 @@ function Navbar() {
             ),
 
           React.createElement(
-            NavLink,
-            { to: '/productos', className: 'nav-link linea1' },
-          'Productos'
-                  ),
+                'li',
+                { className: 'nav-item' },
+                React.createElement(
+                  NavLink,
+                  { to: '/productos', className: 'nav-link linea1' },
+                  'Productos'
+                )
+              ),
 
             React.createElement(
               'li',
@@ -85,48 +95,42 @@ function Navbar() {
           )
         ),
 
-        // CARRITO / LOGIN / REGISTRO
+      // CARRITO / LOGIN / REGISTRO
+      React.createElement(
+        'ul',
+        { className: 'nav ms-auto' }, // nueva lista alineada a la derecha
         React.createElement(
-          'div',
-          { className: 'ms-auto me-5' },
+          'li',
+          { className: 'nav-item' },
           React.createElement(
-            'ul',
-            { className: 'nav' },
-
-            React.createElement(
-              'li',
-              { className: 'nav-item' },
-              React.createElement(
-                NavLink,
-                { to: '/carrito', className: 'nav-link' },
-                React.createElement('i', { className: 'bi bi-cart4' }),
-                ' (4)'
-              )
-            ),
-
-            React.createElement(
-              'li',
-              { className: 'nav-item me-0' },
-              React.createElement(
-                NavLink,
-                { to: '/login', className: 'nav-link' },
-                'Iniciar Sesión'
-              )
-            ),
-
-            React.createElement(
-              'li',
-              { className: 'nav-item' },
-              React.createElement(
-                NavLink,
-                { to: '/registro', className: 'nav-link' },
-                'Registrarse'
-              )
-            )
+            NavLink,
+            { to: '/carrito', className: 'nav-link' },
+            React.createElement('i', { className: 'bi bi-cart4 me-1' }),
+            ` (${totalItems})`
+          )
+        ),
+        React.createElement(
+          'li',
+          { className: 'nav-item me-0' },
+          React.createElement(
+            NavLink,
+            { to: '/login', className: 'nav-link' },
+            'Iniciar Sesión'
+          )
+        ),
+        React.createElement(
+          'li',
+          { className: 'nav-item' },
+          React.createElement(
+            NavLink,
+            { to: '/registro', className: 'nav-link' },
+            'Registrarse'
           )
         )
       )
-    )
+        )
+      )
+    
   );
 }
 
