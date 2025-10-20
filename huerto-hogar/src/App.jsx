@@ -1,45 +1,35 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Carrito from './pages/Carrito';
-import Contacto from './pages/Contacto';
-import Nosotros from './pages/Nosotros';
-import Login from './pages/Login';
-import Registro from './pages/Registro';
-import Productos from './pages/Productos';
-import productos from './data/productos.js';
-import Blogs from './pages/Blogs';
-
+// src/App.jsx
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Carrito from "./pages/Carrito";
+import Contacto from "./pages/Contacto";
+import Nosotros from "./pages/Nosotros";
+import Login from "./pages/Login";
+import Registro from "./pages/Registro";
+import Productos from "./pages/Productos";
+import Blogs from "./pages/Blogs";
 
 
 function App() {
-  // Diagnóstico rápido:
-  console.log('Navbar type:', typeof Navbar);
-  console.log('Footer type:', typeof Footer);
-  console.log('Home type:', typeof Home);
-
-  return React.createElement(
-    React.Fragment,
-    null,
-    React.createElement(Navbar),
-    React.createElement(
-      Routes,
-      null,
-      React.createElement(Route, { path: '/', element: React.createElement(Home) }),
-      React.createElement(Route, { path: '/productos', element: React.createElement(Productos) }),
-      React.createElement(Route, { path: '/carrito', element: React.createElement(Carrito) }),
-      React.createElement(Route, { path: '/contacto', element: React.createElement(Contacto) }),
-      React.createElement(Route, { path: '/nosotros', element: React.createElement(Nosotros) }),
-      React.createElement(Route, { path: '/login', element: React.createElement(Login) }),
-      React.createElement(Route, { path: '/registro', element: React.createElement(Registro) }),
-      React.createElement(Route, { path: '/blogs', element: React.createElement(Blogs) })
-      
-      
-      
-    ),
-    React.createElement(Footer)
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/productos" element={<Productos />} />
+        <Route path="/carrito" element={<Carrito />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/nosotros" element={<Nosotros />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Registro />} />
+        <Route path="/blogs" element={<Blogs />} />
+      </Routes>
+      <Footer />
+    </>
   );
 }
+
 export default App;

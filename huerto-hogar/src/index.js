@@ -10,8 +10,15 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import { CartProvider } from './context/CartContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  React.createElement(BrowserRouter, null, React.createElement(App))
+ <React.StrictMode>
+    <CartProvider> {/* 🛒 Envolvemos toda la app aquí */}
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </CartProvider>
+  </React.StrictMode>
 );

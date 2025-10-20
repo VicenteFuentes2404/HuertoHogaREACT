@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import "../assets/css/style.css";
 import ProductCard from "../components/ProductCard";
 import productos from "../data/productos";
+import { useCart } from '../context/CartContext';
+
 
 function Productos() {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("todos");
-
+  const { addToCart } = useCart();
+  
   // Filtramos los productos según la categoría seleccionada
   const productosFiltrados =
     categoriaSeleccionada === "todos"
@@ -62,7 +65,7 @@ function Productos() {
         <div className="row g-4">
           {productosFiltrados.length > 0 ? (
             productosFiltrados.map((p) => (
-              <ProductCard key={p.slug} producto={p} />
+              <ProductCard key={p.slug} producto={p} addToCart={addToCart} />
             ))
           ) : (
             <p className="text-center">No hay productos en esta categoría.</p>
