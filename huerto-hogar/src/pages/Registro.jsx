@@ -251,7 +251,7 @@ export default function Registro() {
         </section>
       </main>
 
-      <Footer />
+    
     </>
   );
 }
