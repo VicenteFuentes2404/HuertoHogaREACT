@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Registro from "./pages/Registro";
 import Productos from "./pages/Productos";
 import Blogs from "./pages/Blogs";
+import DetalleProducto from "./pages/DetalleProducto";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/producto/:slug" element={<DetalleProducto />} />
       </Routes>
       <Footer />
     </>
