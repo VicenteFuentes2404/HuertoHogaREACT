@@ -14,6 +14,10 @@ import Blogs from "./pages/Blogs";
 import DetalleProducto from "./pages/DetalleProducto";
 import Checkout from "./pages/Checkout";
 import Boleta from "./pages/Boleta";
+import Perfil from "./pages/Perfil";
+import EditarPerfil from "./pages/EditarPerfil";
+
+
 
 
 function App() {
@@ -32,6 +36,12 @@ function App() {
         <Route path="/producto/:slug" element={<DetalleProducto />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/boleta" element={<Boleta />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/editar-perfil" element={<EditarPerfil />} />
+
+        
+        
+
 
       </Routes>
       <Footer />
