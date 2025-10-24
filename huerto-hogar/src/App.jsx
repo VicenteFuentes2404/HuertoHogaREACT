@@ -17,6 +17,9 @@ import Boleta from "./pages/Boleta";
 import Perfil from "./pages/Perfil";
 import EditarPerfil from "./pages/EditarPerfil";
 import NavbarPerfil from "./components/NavbarPerfil";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminPedidos from "./pages/AdminPedidos";
+import RegistroUsuarioAdmin from "./pages/RegistroUsuarioAdmin";
 
 
 
@@ -32,6 +35,14 @@ function App() {
      ?<NavbarPerfil /> 
      :<Navbar />}
 
+
+    {(currentLocation.pathname.startsWith("/perfil") ||
+      currentLocation.pathname.startsWith("/admin")) ? (
+      <></>
+    ) : (
+      <Navbar />
+    )}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/productos" element={<Productos />} />
@@ -46,6 +57,12 @@ function App() {
         <Route path="/boleta" element={<Boleta />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/editar-perfil" element={<EditarPerfil />} />
+
+
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/pedidos" element={<AdminPedidos />} />
+        <Route path="/admin/registro-usuario" element={<RegistroUsuarioAdmin />} />
+
 
         
         
