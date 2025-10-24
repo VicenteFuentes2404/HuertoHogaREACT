@@ -1,6 +1,6 @@
 // src/App.jsx
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -16,14 +16,22 @@ import Checkout from "./pages/Checkout";
 import Boleta from "./pages/Boleta";
 import Perfil from "./pages/Perfil";
 import EditarPerfil from "./pages/EditarPerfil";
+import NavbarPerfil from "./components/NavbarPerfil";
 
 
 
 
 function App() {
-  return (
+
+  const currentLocation = useLocation();
+  
+    return (
+      
     <>
-      <Navbar />
+    {(currentLocation.pathname === "/perfil" || currentLocation.pathname === "/editar-perfil") 
+     ?<NavbarPerfil /> 
+     :<Navbar />}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/productos" element={<Productos />} />
