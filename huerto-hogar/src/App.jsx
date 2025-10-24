@@ -1,6 +1,6 @@
 // src/App.jsx
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -14,12 +14,24 @@ import Blogs from "./pages/Blogs";
 import DetalleProducto from "./pages/DetalleProducto";
 import Checkout from "./pages/Checkout";
 import Boleta from "./pages/Boleta";
+import Perfil from "./pages/Perfil";
+import EditarPerfil from "./pages/EditarPerfil";
+import NavbarPerfil from "./components/NavbarPerfil";
+
+
 
 
 function App() {
-  return (
+
+  const currentLocation = useLocation();
+  
+    return (
+      
     <>
-      <Navbar />
+    {(currentLocation.pathname === "/perfil" || currentLocation.pathname === "/editar-perfil") 
+     ?<NavbarPerfil /> 
+     :<Navbar />}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/productos" element={<Productos />} />
@@ -32,6 +44,12 @@ function App() {
         <Route path="/producto/:slug" element={<DetalleProducto />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/boleta" element={<Boleta />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/editar-perfil" element={<EditarPerfil />} />
+
+        
+        
+
 
       </Routes>
       <Footer />

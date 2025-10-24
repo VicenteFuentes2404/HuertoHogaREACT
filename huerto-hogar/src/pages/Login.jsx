@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logoHuerto from "../assets/img/logo-huerto.png";
-import Footer from "../components/Footer"; // 👈 importar Footer
+
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -125,8 +125,7 @@ function Login() {
         </div>
       </section>
 
-      {/* Footer */}
-      
+     
     </>
   );
 }
