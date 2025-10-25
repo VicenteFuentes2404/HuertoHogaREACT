@@ -1,5 +1,7 @@
 // src/pages/Perfil.jsx
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 const Perfil = () => {
   return (
@@ -40,16 +42,31 @@ const Perfil = () => {
               <h4>Seguimiento de Compras</h4>
               <i className="bi bi-truck" style={{ fontSize: "1.5rem" }}></i>
             </div>
+
             <ul className="list-group">
               <li className="list-group-item d-flex justify-content-between align-items-center">
-                Pedido #1234 <span className="badge bg-warning text-dark">En camino</span>
+                Pedido #1234
+                <div className="d-flex align-items-center">
+                  <span className="badge bg-warning text-dark me-3">En camino</span>
+                  <Link to="/pedido-en-camino" className="btn btn-sm btn-outline-success">
+                    Ver detalle
+                  </Link>
+                </div>
               </li>
+
               <li className="list-group-item d-flex justify-content-between align-items-center">
-                Pedido #1228 <span className="badge bg-success">Entregado</span>
+                Pedido #1228
+                <div className="d-flex align-items-center">
+                  <span className="badge bg-success me-3">Entregado</span>
+                  <Link to="/pedido-entregado" className="btn btn-sm btn-outline-success">
+                    Ver detalle
+                  </Link>
+                  </div>
               </li>
             </ul>
           </div>
         </div>
+
       </div>
     </main>
   );
