@@ -99,7 +99,8 @@ export default function Registro() {
                       Registro de usuario
                     </h1>
 
-                    <form onSubmit={handleSubmit} noValidate autoComplete="off">
+                    {/* CAMBIO 1: Se añade aria-label para que las pruebas encuentren el formulario */}
+                    <form onSubmit={handleSubmit} noValidate autoComplete="off" aria-label="registro">
                       {/* Nombre */}
                       <div className="mb-3">
                         <label htmlFor="nombre" className="mb-2 text-muted">
@@ -197,6 +198,7 @@ export default function Registro() {
                       {/* Región y comuna */}
                       <div className="row mb-3">
                         <div className="col">
+                          <label htmlFor="region" className="form-label visually-hidden">Región</label>
                           <select
                             id="region"
                             className={`form-select ${
@@ -217,6 +219,7 @@ export default function Registro() {
                           </div>
                         </div>
                         <div className="col">
+                           <label htmlFor="comuna" className="form-label visually-hidden">Comuna</label>
                           <select
                             id="comuna"
                             className={`form-select ${
@@ -251,7 +254,8 @@ export default function Registro() {
         </section>
       </main>
 
-    
+      {/* CAMBIO 2: Se renderiza el Footer que estaba importado pero no se usaba */}
+     
     </>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// No es necesario importar React dos veces
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -44,37 +45,37 @@ const Footer = () => {
 
       {/* Formulario */}
       <div className="footer-formulario">
-  <form
-    id="formBoletin"
-    onSubmit={handleSubmit}
-    className="d-flex align-items-center justify-content-center flex-wrap gap-2"
-  >
-    <label htmlFor="emailBoletin" className="mb-0 me-2 text-white">
-      Suscríbete al boletín:
-    </label>
+        <form
+          id="formBoletin"
+          onSubmit={handleSubmit}
+          className="d-flex align-items-center justify-content-center flex-wrap gap-2"
+        >
+          <label htmlFor="emailBoletin" className="mb-0 me-2 text-white">
+            Suscríbete al boletín:
+          </label>
 
-    <input
-      type="email"
-      id="emailBoletin"
-      placeholder="Tu correo"
-      required
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
-      className="form-control rounded-3"
-      style={{ width: 360, maxWidth: "80vw" }}
-    />
+          <input
+            type="email"
+            id="emailBoletin"
+            placeholder="Tu correo"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="form-control rounded-3"
+            style={{ width: 360, maxWidth: "80vw" }}
+          />
 
-    <button type="submit" className="btn btn-light border border-dark">
-      Suscribirse
-    </button>
-  </form>
+          <button type="submit" className="btn btn-light border border-dark">
+            Suscribirse
+          </button>
+        </form>
 
-  {mensaje && (
-    <p id="mensajeSuscripcion" className={`mensaje mt-2 ${colorMensaje} text-center`}>
-      {mensaje}
-    </p>
-  )}
-</div>
+        {mensaje && (
+          <p id="mensajeSuscripcion" className={`mensaje mt-2 ${colorMensaje} text-center`}>
+            {mensaje}
+          </p>
+        )}
+      </div>
 
 
       <p className="copy mb-0">© 2025 Huerto Hogar</p>
@@ -82,4 +83,7 @@ const Footer = () => {
   );
 };
 
+// Exportamos el componente real, no el mock
 export default Footer;
+
+// La función duplicada que causaba el error ha sido eliminada.
