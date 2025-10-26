@@ -20,6 +20,8 @@ import NavbarPerfil from "./components/NavbarPerfil";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminPedidos from "./pages/AdminPedidos";
 import RegistroUsuarioAdmin from "./pages/RegistroUsuarioAdmin";
+import PedidoEntregado from "./pages/PedidoEntregado";
+import PedidoEnCamino from "./pages/PedidoEnCamino";
 
 
 
@@ -57,6 +59,9 @@ function App() {
         <Route path="/boleta" element={<Boleta />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/editar-perfil" element={<EditarPerfil />} />
+        <Route path="/pedido-entregado" element={<PedidoEntregado />} />
+        <Route path="/pedido-en-camino" element={<PedidoEnCamino />} />
+
 
 
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
