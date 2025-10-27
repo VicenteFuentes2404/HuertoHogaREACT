@@ -4,7 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 export default function Checkout() {
   const { cartItems } = useCart();
-  const total = cartItems.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+  const total = cartItems.reduce(
+    (acc, item) => acc + item.precio * item.cantidad,
+    0
+  );
   const navigate = useNavigate();
 
   // Estado para cliente
@@ -24,18 +27,66 @@ export default function Checkout() {
     referencia: "",
   });
 
+  const [errores, setErrores] = useState({});
+
+  const emailRegex = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/i;
+  const telefonoRegex = /^[0-9]{7,15}$/;
+
   const handleClienteChange = (e) => {
     setCliente({ ...cliente, [e.target.name]: e.target.value });
+    setErrores({ ...errores, [e.target.name]: "" });
   };
 
   const handleDireccionChange = (e) => {
     setDireccion({ ...direccion, [e.target.name]: e.target.value });
+    setErrores({ ...errores, [e.target.name]: "" });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Redirigir a la boleta visual
-    navigate("/boleta");
+    const nuevosErrores = {};
+
+    // --- Validaciones Cliente ---
+    if (!cliente.nombre.trim())
+      nuevosErrores.nombre = "El nombre es obligatorio.";
+
+    if (!cliente.apellido.trim())
+      nuevosErrores.apellido = "El apellido es obligatorio.";
+
+    if (!cliente.telefono.trim())
+      nuevosErrores.telefono = "El teléfono es obligatorio.";
+    else if (!telefonoRegex.test(cliente.telefono.trim()))
+      nuevosErrores.telefono =
+        "El teléfono debe contener solo números (7 a 15 dígitos).";
+
+    if (!cliente.correo.trim())
+      nuevosErrores.correo = "El correo electrónico es obligatorio.";
+    else if (!emailRegex.test(cliente.correo.trim()))
+      nuevosErrores.correo =
+        "El correo debe ser @duoc.cl, @profesor.duoc.cl o @gmail.com.";
+    else if (cliente.correo.trim().length > 100)
+      nuevosErrores.correo = "El correo no debe superar los 100 caracteres.";
+
+    // --- Validaciones Dirección ---
+    if (!direccion.comuna.trim())
+      nuevosErrores.comuna = "Debes seleccionar una comuna.";
+
+    if (!direccion.calle.trim())
+      nuevosErrores.calle = "La calle es obligatoria.";
+
+    if (!direccion.numero.trim())
+      nuevosErrores.numero = "El número es obligatorio.";
+
+    // No obligatorio pero con validación simple
+    if (direccion.referencia && direccion.referencia.trim().length > 120)
+      nuevosErrores.referencia =
+        "La referencia no puede superar los 120 caracteres.";
+
+    setErrores(nuevosErrores);
+
+    if (Object.keys(nuevosErrores).length === 0) {
+      navigate("/boleta");
+    }
   };
 
   return (
@@ -70,6 +121,7 @@ export default function Checkout() {
             <small className="text-muted mb-3 d-block">
               Completa la información de contacto
             </small>
+
             <div className="mb-3">
               <label className="form-label">Nombre</label>
               <input
@@ -78,9 +130,12 @@ export default function Checkout() {
                 value={cliente.nombre}
                 onChange={handleClienteChange}
                 className="form-control"
-                required
               />
+              {errores.nombre && (
+                <small className="text-danger">{errores.nombre}</small>
+              )}
             </div>
+
             <div className="mb-3">
               <label className="form-label">Apellido</label>
               <input
@@ -89,9 +144,12 @@ export default function Checkout() {
                 value={cliente.apellido}
                 onChange={handleClienteChange}
                 className="form-control"
-                required
               />
+              {errores.apellido && (
+                <small className="text-danger">{errores.apellido}</small>
+              )}
             </div>
+
             <div className="mb-3">
               <label className="form-label">Teléfono</label>
               <input
@@ -100,9 +158,12 @@ export default function Checkout() {
                 value={cliente.telefono}
                 onChange={handleClienteChange}
                 className="form-control"
-                required
               />
+              {errores.telefono && (
+                <small className="text-danger">{errores.telefono}</small>
+              )}
             </div>
+
             <div className="mb-3">
               <label className="form-label">Correo</label>
               <input
@@ -111,8 +172,10 @@ export default function Checkout() {
                 value={cliente.correo}
                 onChange={handleClienteChange}
                 className="form-control"
-                required
               />
+              {errores.correo && (
+                <small className="text-danger">{errores.correo}</small>
+              )}
             </div>
 
             {/* DIRECCIÓN */}
@@ -120,6 +183,7 @@ export default function Checkout() {
             <small className="text-muted mb-3 d-block">
               Completa los datos de envío
             </small>
+
             <div className="mb-3">
               <label className="form-label">Región</label>
               <select
@@ -132,6 +196,7 @@ export default function Checkout() {
                 <option value="Metropolitana">Metropolitana</option>
               </select>
             </div>
+
             <div className="mb-3">
               <label className="form-label">Comuna</label>
               <select
@@ -139,14 +204,17 @@ export default function Checkout() {
                 value={direccion.comuna}
                 onChange={handleDireccionChange}
                 className="form-select"
-                required
               >
                 <option value="">Selecciona comuna</option>
                 <option value="Santiago">Santiago</option>
                 <option value="San Bernardo">San Bernardo</option>
                 <option value="El Bosque">El Bosque</option>
               </select>
+              {errores.comuna && (
+                <small className="text-danger">{errores.comuna}</small>
+              )}
             </div>
+
             <div className="mb-3">
               <label className="form-label">Calle</label>
               <input
@@ -155,9 +223,12 @@ export default function Checkout() {
                 value={direccion.calle}
                 onChange={handleDireccionChange}
                 className="form-control"
-                required
               />
+              {errores.calle && (
+                <small className="text-danger">{errores.calle}</small>
+              )}
             </div>
+
             <div className="mb-3">
               <label className="form-label">Número</label>
               <input
@@ -166,9 +237,12 @@ export default function Checkout() {
                 value={direccion.numero}
                 onChange={handleDireccionChange}
                 className="form-control"
-                required
               />
+              {errores.numero && (
+                <small className="text-danger">{errores.numero}</small>
+              )}
             </div>
+
             <div className="mb-3">
               <label className="form-label">Referencia</label>
               <input
@@ -178,6 +252,9 @@ export default function Checkout() {
                 onChange={handleDireccionChange}
                 className="form-control"
               />
+              {errores.referencia && (
+                <small className="text-danger">{errores.referencia}</small>
+              )}
             </div>
 
             <button type="submit" className="btn btn-success w-100 mt-3">
@@ -188,7 +265,4 @@ export default function Checkout() {
       </div>
     </div>
   );
-
 }
-
-
